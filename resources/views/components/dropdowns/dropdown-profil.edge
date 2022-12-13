@@ -1,6 +1,6 @@
 <div class="relative inline-block text-left">
     <div>
-      <button type="button" class="inline-flex w-full justify-center rounded-md bg-sky-700 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-sky-300" id="menu-profile-btn" aria-expanded="true" aria-haspopup="true">     
+      <button type="button" class="inline-flex w-full justify-center rounded-full bg-purple-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200" id="menu-profile-btn" aria-expanded="true" aria-haspopup="true">     
 
         {{ user.username }}
         <!-- Heroicon name: mini/chevron-down -->
@@ -21,16 +21,16 @@
         To: "transform opacity-0 scale-95"
     -->
 
-    <div class="absolute hidden right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-sky-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" id="menu" role="menu" aria-orientation="vertical" aria-labelledby="menu-profile-btn" tabindex="-1">
+    <div class="absolute hidden right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-purple-500 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" id="menu" role="menu" aria-orientation="vertical" aria-labelledby="menu-profile-btn" tabindex="-1">
       <div class="" role="none">
          <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-         <a href="/auth/profile" class="text-white block px-4 py-2 text-sm hover:bg-sky-400 rounded-t-md" role="menuitem" tabindex="-1" id="menu-item-0">Mon compte</a>
+         <a href="/auth/profile" class="text-white block px-4 py-2 text-sm hover:bg-purple-400 rounded-t-md duration-200" role="menuitem" tabindex="-1" id="menu-item-0">Mon compte</a>
         @if(admin)
-         <a href="/admin/dashboard" class="text-white block px-4 py-2 text-sm hover:bg-sky-400" role="menuitem" tabindex="-1" id="menu-item-1">Dashboard</a>
+         <a href="/admin/dashboard" class="text-white block px-4 py-2 text-sm hover:bg-purple-400 duration-200" role="menuitem" tabindex="-1" id="menu-item-1">Dashboard</a>
         @else
-         <a href="#" class="text-white block px-4 py-2 text-sm hover:bg-sky-400" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
+         <a href="#" class="text-white block px-4 py-2 text-sm hover:bg-purple-400" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
         @endif
-        <a href="/auth/logout" class="text-red-400 block px-4 py-2 text-sm hover:bg-red-200 rounded-b-md" role="menuitem" tabindex="-1" id="menu-item-1">Déconnexion</a>
+        <a href="/auth/logout" class="text-red-400 block px-4 py-2 text-sm hover:bg-red-200 rounded-b-md duration-200" role="menuitem" tabindex="-1" id="menu-item-1">Déconnexion</a>
       </div>
     </div>
   </div>
