@@ -1,0 +1,11 @@
+@set('value', $props.value ?? [])
+
+<fieldset>
+  <legend class="block text-sm font-medium text-gray-700">{{ label }}</legend>
+  @each(option in options)
+    <div>
+      <input type="checkbox" id="{{ option.label }}" name="{{ name }}" value="{{ option.id }}" {{ value.includes(option.id) && 'checked' }}>
+      <label for="{{ option.label }}">{{ option.label }}</label>
+    </div>
+  @end
+</fieldset>

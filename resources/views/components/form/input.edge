@@ -1,0 +1,25 @@
+@set('type', $props.type ? $props.type : 'text')
+@set('label', $props.label ? $props.label : '')
+@set('name', $props.name ? $props.name : '')
+@set('value', flashMessages.get($props.name) ? flashMessages.get($props.name) : value ? value : '')
+@set('required', $props.required ? $props.required : false)
+
+<div>
+  <label for="{{ name }}" class="block text-sm font-medium">{{ label }}</label>
+  <div class="mt-1">
+    <input
+      id="{{ name }}"
+      name="{{ name }}"
+      type="{{ type }}"
+      autocomplete="{{ name }}"
+      class="px-4 pr-10 py-3 border border-gray-300 rounded-md {{ classes }}"
+      value="{{ value }}"
+      {{ required ? 'required' : '' }}
+    >
+  </div>
+  @if(flashMessages.has('errors.' + name))
+    <p class="mt-2 text-red-600 text-sm">
+      {{ flashMessages.get('errors.' + name) }}
+    </p>
+  @end
+</div>

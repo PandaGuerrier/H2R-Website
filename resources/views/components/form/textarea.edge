@@ -1,0 +1,24 @@
+@set('value', flashMessages.get($props.name) ? flashMessages.get($props.name) : $props.value ? $props.value : '')
+
+<div x-data="{ data: `{{ value }}` }">
+  <label for="{{ name }}" class="block text-sm font-medium">{{ label }}</label>
+  <div class="mt-1 w-full">
+		<textarea
+      x-model="data"
+      id="{{ name }}"
+      name="{{ name }}"
+      rows="{{ rows || 5 }}"
+      class="px-4 pr-10 py-3 border border-gray-300 rounded-md w-full"
+    >{{ value }}</textarea>
+  </div>
+  @if(max)
+    <p class="text-sm py-1 flex justify-end">
+      <span x-text="data.length" :class="data.length >= {{ max }} ? 'text-red-500' : ''"></span>/{{ max }}
+    </p>
+  @end
+  @if(flashMessages.has('errors.' + name))
+  <p class="text-red-600 text-sm">
+    {{ flashMessages.get('errors.' + name) }}
+  </p>
+  @end
+</div>

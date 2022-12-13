@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <title>Mineschool</title>
+    @entryPointStyles('app')
+    @entryPointScripts('app')
+  </head>
+  <body class="">
+    <main class="overflow-hidden">
+
+      <div>
+        @if(flashMessages.has("success"))
+          @!component('components/actionbar', { type: 'success', text: flashMessages.get("success") })
+          @endif
+      </div>
+
+      <form class="flex flex-col items-center justify-center h-screen" action="{{ route('pubs.store') }}" method="POST" enctype="multipart/form-data">
+        @component('components/form/input', {
+          name: 'title',
+          label: 'Titre',
+          type: 'text',
+          value: '',
+        })
+        @end
+
+        @component('components/form/textarea', {
+          name: 'description',
+          label: 'Description',
+          type: 'text',
+          value: '',
+          max: 255,
+        })
+        @end
+
+        
+        <div>
+          <input type="file" name="video" id="video" accept="video/mp4" class="block w-full rounded-md border-gray-300 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+          @if(flashMessages.has('errors.video'))
+            <h1 class="text-red-500 text-sm">{{ flashMessages.get('errors.video') }}</h1>
+          @endif          
+        </div>
+
+        <button type="submit" class="bg-blue-500 text-white p-2 rounded">Submit</button>
+      </form>
+</html>

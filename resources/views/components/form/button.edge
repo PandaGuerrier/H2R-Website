@@ -1,0 +1,8 @@
+@set('type', $props.type ? $props.type : 'button')
+
+<button
+  type="{{ type }}"
+  id="{{ id }}"
+  class="px-3 py-2 rounded bg-blue-400 text-white"
+  {{ form ? `form=${form}` : '' }}
+>{{ label }}</button>

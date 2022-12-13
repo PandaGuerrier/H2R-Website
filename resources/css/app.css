@@ -1,0 +1,137 @@
+/*noinspection CssUnknownTarget*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+@import './tailwind.css';
+
+html, body {
+    font-family: 'Poppins', sans-serif;
+    color: #46444c;
+    position: relative;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y: visible;
+    background-color: #0C4A6E;
+}
+
+section {
+    overflow: hidden;
+}
+
+/*
+body::-webkit-scrollbar {
+  width: 0px; /* width of the entire scrollbar 
+}
+
+body::-webkit-scrollbar-track {
+  background: none; /* color of the tracking area 
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: none; /* color of the scroll thumb 
+  border-radius: 20px; /* roundness of the scroll thumb 
+  border: 0px solid none; /* creates padding around scroll thumb 
+}*/
+
+.header--background .pattern--design {
+    /*noinspection CssUnknownTarget*/
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(15 23 42 / 0.04)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+}
+
+.header--background {
+    /*noinspection CssUnknownTarget*/
+
+    background-image: url('https://cdn.discordapp.com/attachments/993488910535630888/1009940917936996383/Screenshot_from_2022-08-18_23-44-20.png');
+    height: 100vh;
+    background-size: 150rem;
+}
+
+.reveal {
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 2s all ease;
+}
+
+.reveal.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.logoletter {
+    letter-spacing: 70px;
+    font-family: 'bebas';
+}
+
+
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+/* The Close Button */
+.close {
+    position: relative;
+    color: #f1f1f1;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
+}
+

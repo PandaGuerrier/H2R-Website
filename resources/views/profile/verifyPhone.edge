@@ -1,0 +1,82 @@
+@layout('layouts/profile')
+
+@set('user', auth.user)
+
+@section('body')
+<div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 z-30">
+  <div class="max-w-md w-full space-y-8 z-30  p-10 rounded-md">
+    <div class="py-6 px-6 w-80 bg-sky-900 rounded-md mx-auto text-center my-6 text-white">
+
+
+      <div id="nextForm">
+      <p class="flex-row space-y-5">
+        <span class="text-2xl font-bold">Vérification</span>
+        <br>
+        <span class="text-sm">Veuillez saisir le code de vérification que nous vous avons envoyé par SMS</span>
+      </p>
+      <form action="/auth/profile/phone/verify/code/{{ number }}/" x-data="otpForm()" method="POST">
+        <div class="flex justify-between">
+          <template x-for="(input, index) in length" :key="index">
+            <input
+            type="tel"
+            maxlength="1"
+            class="border border-sky-900 w-10 h-10 text-center bg-sky-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-sky-900 focus:border-transparent"
+            :x-ref="index"
+            x-on:input="handleInput($event)"
+            x-on:paste="handlePaste($event)"
+            x-on:keydown.backspace="$event.target.value || handleBackspace($event.target.getAttribute('x-ref'))"
+          />
+          </template>
+        </div>
+        <input type="hidden" name="otp" x-model="value" />
+        <button type="submit" class="bg-sky-800 mx-auto block w-full p-2 mt-2 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-sky-900 focus:border-transparent">
+          Vérifier
+        </button>
+      </form>
+      </div>
+    </div>
+    <script>
+      function otpForm() {
+        return {
+          length: 6,
+          value: "",
+          handleInput(e) {
+            const input = e.target;
+
+            this.value = Array.from(Array(this.length), (element, i) => {
+              return this.$refs[i].value || "";
+            }).join("");
+
+            if (input.nextElementSibling && input.value) {
+              input.nextElementSibling.focus();
+              input.nextElementSibling.select();
+            }
+          },
+          handlePaste(e) {
+            const paste = e.clipboardData.getData("text");
+            this.value = paste;
+
+            const inputs = Array.from(Array(this.length));
+
+            inputs.forEach((element, i) => {
+              this.$refs[i].value = paste[i] || "";
+            });
+          },
+          handleBackspace(e) {
+            const previous = parseInt(e, 10) - 1;
+            this.$refs[previous] && this.$refs[previous].focus();
+          },
+        };
+      }
+    </script>
+  </div>
+
+
+  <!-- Dev tools -->
+  <div id="alpine-devtools" x-data="devtools()" x-show="alpines.length" x-init="start()">
+  </div>
+</div>
+</div>
+
+
+@endsection

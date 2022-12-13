@@ -1,0 +1,17 @@
+<div class="relative flex items-start">
+  <div class="flex items-center h-5">
+    <input
+      id="{{ name }}"
+      name="{{ name }}"
+      type="checkbox"
+      class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+      {{ !!value && 'checked' }}
+    />
+  </div>
+  <div class="ml-3 text-sm">
+    <label for="{{ name }}" class="font-medium text-gray-700">{{ label }}</label>
+    @if(description)
+      <p class="text-gray-500">{{ description }}</p>
+    @end
+  </div>
+</div>

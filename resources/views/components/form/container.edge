@@ -1,0 +1,11 @@
+<form
+  action="{{ action }}"
+  method="{{ method }}"
+  enctype="multipart/form-data"
+  up-target="[layout-main], [layout-navbar]"
+  up-fail-target="[layout-main]"
+  class="space-y-5"
+  id="{{ id || 'form' }}"
+>
+  {{{ await $slots.main() }}}
+</form>

@@ -1,0 +1,7 @@
+@set('value', $props.value ?? '')
+
+<div>
+  <label for="editor" class="block text-sm font-medium text-gray-700">{{ label }}</label>
+  <input type="hidden" name="{{ name }}" id="content">
+  <div id="editor" class="lg:!h-[75vh]">{{{ value }}}</div>
+</div>
