@@ -17,23 +17,89 @@
 
 -->
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://js.stripe.com/v3/"></script>
-    <title>Harcèlement de Rue</title>
-    @entryPointStyles('app')
-    @entryPointScripts('app')
-  </head>
-  <body class="">
-    <main>
-      <section>
-        @!navbar()
-        
-      </section>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+  <title>Harcèlement de Rue</title>
+  @entryPointStyles('app')
+  @entryPointScripts('app')
+</head>
+
+<body class="">
+  <main class="h-[100vh]">
+    @!navbar()  
+    <video id="background-video" autoplay loop muted class="fixed">
+      <source src="https://assets.codepen.io/6093409/river.mp4" type="video/mp4">
+    </video>
+    <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-center">
+      <div class="w-full md:w-1/2 min-h-full flex items-center justify-center py-12 px-4 z-30 md:mr-52 p-5">
+          <div class="w-full space-y-4 z-30 pt-24 rounded-md">
+            <div class="ml-3 space-y-4">
+              <h1 class="text-3xl md:text-6xl text-white">Harcèlement de rue</h1>
+              <p class="text-lg md:text-2xl text-white">Osez <span class="typed-text text-purple-500"></span></p>
+            </div>
+            <div class="mt-5 left-0 w-1/4 flex items-start justify-start space-x-5">
+              <a href="#" class="text-purple-500 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-4 py-3 rounded-full text-sm font-medium">Vidéos</a>
+              <a href="#" class="bg-purple-500 text-white hover:bg-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-4 py-3 rounded-full text-sm font-medium">Aides</a>
+            </div>
+       </div>
+        <div class="hidden md:block flex-row items-center justify-center">
+          @!component('svg/logoGrand', {
+            classe: 'mt-32'
+           })
+           <p class="ml-20 mt-2 italic text-xs">Créateur: RavenS</p>
+         </div>
+      </div>
+    </div>        
+    <div class="absolute flex-row items-center justify-center mt-48 bg-purple-400  h-full w-full">
+      <div class="flex items-center justify-center mt-10">
+        <p class="text-2xl md:text-4xl text-white">Vous avez besoin d'aide ?</p>
+      </div>
+     </div>
+
     </main>
-  </body>
-  <script>
-  </script>
+</body>
+<script>
+  const typedTextSpan = document.querySelector(".typed-text");
+const cursorSpan = document.querySelector(".cursor");
+
+const textArray = ["dénoncer.", "aider.", "intervenir.", "porter plainte.", "demander de l'aide.", "signaler."];
+const typingDelay = 200;
+const erasingDelay = 100;
+const newTextDelay = 2000; // Delay between current and next text
+let textArrayIndex = 0;
+let charIndex = 0;
+
+function type() {
+  if (charIndex < textArray[textArrayIndex].length) {
+    typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(type, typingDelay);
+  } 
+  else {
+  	setTimeout(erase, newTextDelay);
+  }
+}
+
+function erase() {
+	if (charIndex > 0) {
+    typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
+    charIndex--;
+    setTimeout(erase, erasingDelay);
+  } 
+  else {
+    textArrayIndex++;
+    if(textArrayIndex>=textArray.length) textArrayIndex=0;
+    setTimeout(type, typingDelay + 1100);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() { // On DOM Load initiate the effect
+  if(textArray.length) setTimeout(type, newTextDelay + 250);
+});
+</script>
+
 </html>

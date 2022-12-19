@@ -36,22 +36,22 @@
         </div>
           <div class="hidden sm:block sm:ml-6 sm:mt-3">
             <div class="flex space-x-4 duration-100">
-              <a href="/" class=" shadow-sm text-purple-500 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-3 py-2 rounded-full text-sm font-medium">Accueil</a>
-              <a href="/" class=" shadow-sm text-purple-500 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-3 py-2 rounded-full text-sm font-medium">Vidéos</a>
-              <a href="/" class=" shadow-sm text-purple-500 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-3 py-2 rounded-full text-sm font-medium">Définitions</a>
-              <a href="/" class=" shadow-sm text-purple-500 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-3 py-2 rounded-full text-sm font-medium">Aides</a>
+              <a href="/" class="shadow-md text-purple-500 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-3 py-2 rounded-full text-sm font-medium">Accueil</a>
+              <a href="/" class="shadow-md text-purple-500 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-3 py-2 rounded-full text-sm font-medium">Vidéos</a>
+              <a href="/" class="shadow-md text-purple-500 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-3 py-2 rounded-full text-sm font-medium">Définitions</a>
+              <a href="/" class="shadow-md text-purple-500 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-3 py-2 rounded-full text-sm font-medium">Aides</a>
             </div>
           </div>
         </div>
         <div class="absolute space-x-4 right-0 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 hidden sm:block">
         @if(auth.isLoggedIn)
-          <a href={{ route('logout') }} class="duration-200	text-purple-500 hover:bg-red-300 px-3 py-2 rounded-full text-sm font-medium">Déconnexion</a>
+          <a href={{ route('logout') }} class="duration-200	text-purple-500 hover:bg-red-300 px-3 py-2 rounded-full text-sm font-medium shadow-md">Déconnexion</a>
                  @!component('components/dropdowns/dropdown-profil', {
                     user: auth.user,
                     admin: auth.user.role == "admin"
                  })
           @else
-              <a href={{ route('login') }} class="text-purple-500 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-3 py-2 rounded-full text-sm font-medium">Connexion</a>
+              <a href={{ route('login') }} class="text-purple-500 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-3 py-2 rounded-full text-sm font-medium shadow-md">Connexion</a>
               <a href={{ route('register') }} class="bg-purple-500 text-white hover:bg-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-3 py-2 rounded-full text-sm font-medium">Inscription</a>
           @endif
         </div>
@@ -61,22 +61,24 @@
   
     <!-- Mobile menu, show/hide based on menu state. -->
     <div class="sm:hidden" >
-      <div class="hidden px-2 pt-2 pb-3 space-y-1" id="mobile-menu">
-        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="/" class="inline-flex w-full justify-center rounded-full px-4 py-2 text-md font-medium text-white shadow-sm hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-sky-300">Accueil</a>
+      <div class="hidden px-2 pt-2 pb-3" id="mobile-menu">
+        <div class="space-y-2">
+          <a href="/" class="inline-flex w-full justify-center rounded-full px-4 py-2 text-md font-medium text-purple-500 shadow-md hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200">Accueil</a>
   
-        @!component('components/dropdowns/mobile/dropdown-formation')
-  
-        @!component('components/dropdowns/mobile/dropdown-postuler')
-  
+          <a href="/" class="inline-flex w-full justify-center rounded-full px-4 py-2 text-md font-medium text-purple-500 shadow-md hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200">Vidéo</a>
+          <a href="/" class="inline-flex w-full justify-center rounded-full px-4 py-2 text-md font-medium text-purple-500 shadow-md hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200">Définitions</a>
+          <a href="/" class="inline-flex w-full justify-center rounded-full px-4 py-2 text-md font-medium text-purple-500 shadow-md hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200">Aides</a>  
+        </div>
+
+
+         <div class="space-y-2 mt-5">
         @if(auth.isLoggedIn)
-        <a href={{ route('logout') }} class="inline-flex w-full justify-center rounded-full px-4 py-2 text-md font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-sky-300">Déconnexion</a>
+           <a href={{ route('logout') }} class="inline-flex w-full justify-center rounded-full px-4 py-2 text-md font-medium text-purple-500 shadow-md hover:bg-red-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-red-300 duration-200">Déconnexion</a>
           @else
-        <a href={{ route('login') }} class="inline-flex w-full justify-center rounded-full px-4 py-2 text-md font-medium text-white shadow-sm hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-sky-300">Connexion</a>
-
-        <a href={{ route('register') }} class="inline-flex w-full justify-center rounded-full px-4 py-2 text-md font-medium text-white shadow-sm hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-sky-300" aria-current="page"">Inscription</a>
+          <a href={{ route('login') }} class="inline-flex w-full justify-center rounded-full px-4 py-2 text-md font-medium text-purple-500 shadow-md hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200">Connexion</a>
+          <a href={{ route('register') }} class="inline-flex w-full justify-center rounded-full px-4 py-2 text-md font-medium text-white bg-purple-500 shadow-md hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200">Inscription</a>
         @endif
-
+      </div>
       </div>
     </div>
   </nav>

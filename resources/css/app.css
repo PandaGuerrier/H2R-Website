@@ -16,20 +16,44 @@ section {
     overflow: hidden;
 }
 
-/*
+
 body::-webkit-scrollbar {
-  width: 0px; /* width of the entire scrollbar 
+  width: 5px; /* width of the entire scrollbar */
 }
 
 body::-webkit-scrollbar-track {
-  background: none; /* color of the tracking area 
+  background: #C084FC; /* color of the tracking area */
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: none; /* color of the scroll thumb 
-  border-radius: 20px; /* roundness of the scroll thumb 
-  border: 0px solid none; /* creates padding around scroll thumb 
-}*/
+  background-color: #A855F7; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 0px solid none; /* creates padding around scroll thumb */
+}
+
+#background-video {
+    height: 700px;
+    width: 100vw;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+#boule {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    right: -100px;
+    top: 250px;
+
+    background: rgba(221, 126, 254, 0.76);
+    border-radius: 5000px;
+}  
+
+
 
 .header--background .pattern--design {
     /*noinspection CssUnknownTarget*/
