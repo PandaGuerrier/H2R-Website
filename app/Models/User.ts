@@ -5,7 +5,6 @@ import * as crypto from 'crypto'
 import {attachment, AttachmentContract} from "@ioc:Adonis/Addons/AttachmentLite";
 import Role from "App/Models/Role";
 import Permission from "App/Models/Permission";
-import Subscription from './Subscription';
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -17,9 +16,6 @@ export default class User extends BaseModel {
   @column()
   public email: string
 
-  @column()
-  public emailVerified: boolean
-
   @column({ serializeAs: null })
   public password: string
 
@@ -28,21 +24,6 @@ export default class User extends BaseModel {
 
   @attachment({ preComputeUrl: true })
   public avatar: AttachmentContract
-
-  @column()
-  public favorite: string[]
-
-  @column()
-  public numberPhone: number
-
-  @column()
-  public numberPhoneVerified: boolean
-
-  @column()
-  public numberPhoneCode: number
-
-  @column()
-  public notification: string[]
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
@@ -55,9 +36,6 @@ export default class User extends BaseModel {
 
   @manyToMany(() => Permission)
   public permissions: ManyToMany<typeof Permission>
-
-  @manyToMany(() => Subscription)
-  public subscription: ManyToMany<typeof Subscription>
 
   @beforeSave()
   public static async HashPassword (user: User) {

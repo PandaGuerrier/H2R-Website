@@ -18,5 +18,5 @@ async function hasPermission(user: User) {
   const permissionsList = await user.related('permissions').query()
   const roles = await user.related('roles').query()
 
-  return roles.some((role) => role.name === "admin") || permissionsList.some((permission) => permission.name === 'dashboard:admin') || roles[0].permissions?.some((permission) => permission === 'dashboard:admin')
+  return roles.some((role) => role.name === "admin") || permissionsList.some((permission) => permission.name === 'dashboard:admin') || roles[0]?.permissions?.some((permission) => permission === 'dashboard:admin')
 }

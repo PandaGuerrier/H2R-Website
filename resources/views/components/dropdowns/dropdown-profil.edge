@@ -24,9 +24,8 @@
     <div class="absolute hidden right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-purple-500 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" id="menu" role="menu" aria-orientation="vertical" aria-labelledby="menu-profile-btn" tabindex="-1">
       <div class="" role="none">
          <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-         <a href="/auth/profile" class="text-white block px-4 py-2 text-sm hover:bg-purple-400 rounded-t-md duration-200" role="menuitem" tabindex="-1" id="menu-item-0">Mon compte</a>
         @if(admin)
-         <a href="/admin/dashboard" class="text-white block px-4 py-2 text-sm hover:bg-purple-400 duration-200" role="menuitem" tabindex="-1" id="menu-item-1">Dashboard</a>
+         <a href='{{ route('dashboard.index') }}' class="text-white block px-4 py-2 text-sm hover:bg-purple-400 duration-200" role="menuitem" tabindex="-1" id="menu-item-1">Dashboard</a>
         @else
          <a href="#" class="text-white block px-4 py-2 text-sm hover:bg-purple-400" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
         @endif

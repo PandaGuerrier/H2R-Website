@@ -23,8 +23,6 @@ import './routes/auth'
 import './routes/ally'
 import './routes/dashboards'
 import './routes/stripe'
-import './routes/vidéos/pub'
-import './routes/vidéos/video'
 
 Route.get('/', async ({ view }) => {
   return view.render('home')
@@ -34,8 +32,6 @@ Route.get('/', async ({ view }) => {
 Route.any('*', async ({ view }) => {
   return view.render('errors/404')
 })
-
-
 
 // check db connection
 Route.get('health', async ({ response }) => {

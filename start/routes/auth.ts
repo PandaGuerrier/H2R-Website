@@ -13,11 +13,5 @@ Route.group(() => {
 }).middleware(['guest']).prefix('/auth/')
 
 Route.group(() => {
-Route.get('logout', 'Users/AuthController.logout').as('logout')
-Route.get('profile', 'ProfilesController.index').as('profile')
-Route.get('profile/phone', 'ProfilesController.phone').as('phone')
-Route.post('profile/phone/verify', 'ProfilesController.verifyPhone').as('verifyPhone')
-Route.post('profile/phone/verify/code/:id/', 'ProfilesController.verifyPhoneCode').as('verifyPhoneCode')
-Route.get('profile/phone/fail/:id', 'ProfilesController.phoneFail').as('phoneFail')
-
+    Route.get('logout', 'Users/AuthController.logout').as('logout')
 }).prefix('/auth/').middleware(['auth'])
