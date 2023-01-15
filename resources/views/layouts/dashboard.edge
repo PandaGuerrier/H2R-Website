@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/video.js@7/dist/video-js.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
     <title>Profile • {{ user.username }}</title>
     @entryPointStyles('app')
     @entryPointScripts('app')
@@ -47,7 +49,7 @@ Change class "fixed" to "sticky" in "navbar" (l. 33) so the navbar doesn't hide 
                     <a href="/">Harcèlement2Rue</a>
                 </li>
                 <li class="inline">
-                    <span>{{ route }}</span>
+                    <span>{{ emplacement }}</span>
                 </li>
             </ul>
             <button id="btnSidebarToggler" type="button" class="sm:hidden py-4 text-2xl text-white hover:text-gray-200">
@@ -79,8 +81,8 @@ Change class "fixed" to "sticky" in "navbar" (l. 33) so the navbar doesn't hide 
                         <ul class="mb-8 text-sm font-medium space-y-5">
                             <li>
                                 <a class="active flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-purple-300 duration-200"
-                                    href="#">
-                                    <span class="select-none">Posts</span>
+                                    href="{{ route('dashboard.admin.def.create') }}">
+                                    <span class="select-none">Ajouter une définitions</span>
                                 </a>
                             </li>
                             <li>

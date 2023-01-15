@@ -7,7 +7,7 @@ Route.group(() => {
 
   Route.group(() => {
     Route.get('create', async ({ view }) => {
-      return view.render('/dashboards/admin/def/create')
+      return view.render('dashboards/admin/def/create')
     }).as('dashboard.admin.def.create')
 
     Route.post('create', 'DefController.create').as('dashboard.admin.def.create.post')

@@ -30,15 +30,31 @@ body::-webkit-scrollbar-thumb {
   border-radius: 20px; /* roundness of the scroll thumb */
   border: 0px solid none; /* creates padding around scroll thumb */
 }
+/* do an mobil support*/
+
+@media (min-width: 768px) {
+    #background-video {
+        top: 10px;
+        height: 200px;
+        width: 50px;
+        object-fit: cover;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+      }
+}
+
 
 #background-video {
-    height: 700px;
+    height: 850px;
     width: 100vw;
     object-fit: cover;
     position: absolute;
     left: 0;
     right: 0;
-    top: 0;
+    top: 10px;
     bottom: 0;
   }
 
