@@ -7,9 +7,11 @@ Route.group(() => {
 
   Route.group(() => {
     Route.get('create', async ({ view }) => {
-      return view.render('dashboards/admin/def/create')
+      return view.render('dashboards/admin/temoignage/create')
     }).as('dashboard.admin.def.create')
 
-    Route.post('create', 'DefController.create').as('dashboard.admin.def.create.post')
-  }).prefix('defs')
+    Route.get('', "TemoignageController.index").as("dashboard.admin.def.index")
+
+    Route.post('create', 'TemoignageController.create').as('dashboard.admin.def.create.post')
+  }).prefix('temoignages')
 }).prefix('dashboard/').middleware(['auth', 'admin'])

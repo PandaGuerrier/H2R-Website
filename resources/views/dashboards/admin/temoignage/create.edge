@@ -1,7 +1,7 @@
 @layout('layouts/dashboard')
 
 @set('user', auth.user)
-@set('emplacement', 'Définitions')
+@set('emplacement', 'Création de témoignage')
 
 @section('body')
 <div class="flex-row min-w-full min-h-screen text-white p-16 md:flex space-x-8 justify-center items-center">
@@ -14,7 +14,7 @@
                 })
              @endif               
              <h1 class="text-purple-500 flex justify-center text-4xl mb-10">
-                Créer une définition
+                Créer un témoignage
              </h1>
 
              <div class="mb-5">
@@ -68,7 +68,7 @@
               ['clean']
             ]
           },
-          placeholder: 'Contenu de votre définition',
+          placeholder: 'Contenu de votre témoignage',
           theme: 'snow'
         })
 

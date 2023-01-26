@@ -31,17 +31,4 @@ export default Env.rules({
 	PG_DB_NAME: Env.schema.string(),
 	RECAPTCHA_SITE_KEY: Env.schema.string(),
 	RECAPTCHA_SECRET_KEY: Env.schema.string(),
-	// ally config
-	DISCORD_CLIENT_ID: Env.schema.string(),
-	DISCORD_CLIENT_SECRET: Env.schema.string(),
-	GOOGLE_CLIENT_ID: Env.schema.string(),
-	GOOGLE_CLIENT_SECRET: Env.schema.string(),
-	TWITTER_CLIENT_ID: Env.schema.string(),
-	TWITTER_CLIENT_SECRET: Env.schema.string(),
-	GITHUB_CLIENT_ID: Env.schema.string(),
-	GITHUB_CLIENT_SECRET: Env.schema.string(),
-	STRIPE_SECRET_KEY: Env.schema.string(),
-	STRIPE_PUBLIC_KEY: Env.schema.string(),
-	STRIPE_WEBHOOK_SECRET: Env.schema.string(),
-	STRIPE_API_VERSION: Env.schema.string(),
-	})
+})

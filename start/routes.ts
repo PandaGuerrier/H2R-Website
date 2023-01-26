@@ -20,13 +20,9 @@
 import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
 import Route from '@ioc:Adonis/Core/Route'
 import './routes/auth'
-import './routes/ally'
 import './routes/dashboards'
-import './routes/stripe'
 
-Route.get('/', async ({ view }) => {
-  return view.render('home')
-})
+Route.get('/', "TemoignageController.indexPublic").as("home")
 
 // return to /404 if route not found
 Route.any('*', async ({ view }) => {

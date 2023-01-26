@@ -21,8 +21,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Le site H2R ou Harcèlement 2 rue, permet d'aider les jeunes femmes / filles victiment d'harcèlement (par le biais de numéros vert). Se site permet aussi d'avoir plus d'information de comment réagir, les définitions, réponses aux questions...">
-  <meta name="keywords" content="h2r, harcèlement, harcelement, harselement, H2R, harcèlement de rue, harcelement de rue, harcèlement 2 rue, harcelement 2 rue, harcelements">
+  <meta name="description"
+    content="Le site H2R ou Harcèlement 2 rue, permet d'aider les jeunes femmes / filles victiment d'harcèlement (par le biais de numéros vert). Se site permet aussi d'avoir plus d'information de comment réagir, les définitions, réponses aux questions...">
+  <meta name="keywords"
+    content="h2r, harcèlement, harcelement, harselement, H2R, harcèlement de rue, harcelement de rue, harcèlement 2 rue, harcelement 2 rue, harcelements">
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script src="https://js.stripe.com/v3/"></script>
   <title>Harcèlement de Rue</title>
@@ -32,36 +34,85 @@
 
 <body class="">
   <main class="h-[100vh]">
-    @!navbar()  
+    @!navbar()
     <video id="background-video" autoplay loop muted class="fixed mt-5">
       <source src="/videos/background.mp4" type="video/mp4">
     </video>
     <div class="flex items-center justify-center sm:items-stretch sm:justify-center h-3/4">
       <div class="flex w-full min-h-full items-center justify-center py-12 px-4 z-30 2xl:ml-52 lg:ml-32">
-          <div class="w-full space-y-4 z-30 pt-24 rounded-md flex-row justify-end items-end">
-            <div class="ml-3 space-y-4">
-              <h1 class="text-5xl 2xl:text-7xl text-white">Harcèlement de rue</h1>
-              <p class="text-xl md:text-3xl text-white">Osez <span class="typed-text text-purple-500"></span></p>
-            </div>
-            <div class="mt-5 left-0 w-1/4 flex items-start justify-start space-x-5">
-              <a href="#" class="text-purple-500 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-4 py-3 rounded-full text-sm font-medium">Vidéos</a>
-              <a href="#" class="bg-purple-500 text-white hover:bg-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-4 py-3 rounded-full text-sm font-medium">Aides</a>
-            </div>
-       </div>
+        <div class="w-full space-y-4 z-30 pt-24 rounded-md flex-row justify-end items-end">
+          <div class="ml-3 space-y-4">
+            <h1 class="text-5xl 2xl:text-7xl text-white">Harcèlement de rue</h1>
+            <p class="text-xl md:text-3xl text-white">Osez <span class="typed-text text-purple-500"></span></p>
+          </div>
+          <div class="mt-5 left-0 w-1/4 flex items-start justify-start space-x-5">
+            <a href="#"
+              class="text-purple-500 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-4 py-3 rounded-full text-sm font-medium">Vidéos</a>
+            <a href="#"
+              class="bg-purple-500 text-white hover:bg-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-4 py-3 rounded-full text-sm font-medium">Aides</a>
+          </div>
+        </div>
         <div class="hidden w-full lg:block flex-row items-center justify-center ml-96">
           @!component('svg/logoGrand', {
-            classe: 'mt-32'
-           })
-         </div>
+          classe: 'mt-32'
+          })
+        </div>
       </div>
-    </div>        
-    <div class="absolute flex-row items-center justify-center mt-20 bg-purple-400 h-full w-full">
-      <div class="flex items-center justify-center mt-10">
+    </div>
+    <div class="relative flex-row items-center justify-center pt-5 bg-purple-400 min-h-max w-full">
+      <div class="flex-col flex items-center justify-center mt-12 space-y-10">
         <p class="text-2xl md:text-4xl text-white">Vous avez besoin d'aide ?</p>
-      </div>
-     </div>
+        <div class="m-5 md:mx-56 text-sm md:text-lg text-white">
+          <p class="inline-block text-center">
+            Il existe des associations qui luttent contre l’harcèlement de rue comme <a class="text-purple-700">“stop au harcèlement de rue”</a> qui se situe a Bordeaux à la rue Wilson, on peut les contacter au <a
+            class="ml-1 inline-block text-purple-700 hover:text-purple-600 duration-200" href="tel:0620044006">06 20 04
+            40 06</a> ou par email <a class="ml-1 inline-block text-purple-700 hover:text-purple-600 duration-200" href="mailto:stopauharcelementderue33@gmail.com">stopauharcelementderue33@gmail.com</a>
+          </p>
 
-    </main>
+          <div class="space-y-5 flex-col flex items-center mt-5">
+            <p class="text-xl md:text-2xl text-purple-700">Description de cette association</p>
+            <p class="text-center md:text-lg">
+              Cette association a pour but de sensibiliser le public au phénomène de l’harcèlement de rue à bordeaux.
+              Mais
+              aussi de porter des informations à la prévention, l’association agit au coeur de la ville pour inciter le
+              public à lutter contre l’harcèlement de rue.
+              Il existe aussi l’association “ Stand-up international” qui permet de se former pour savoir comment réagir
+              face à l’harcèlement de rue mais aussi elle aide les femmes a regagner de la “force” et surtout de ne pas
+              se
+              sentir seule!!!
+            </p>
+          </div>
+          <div class="space-y-5 flex-col flex items-center mt-5">
+            <p class="text-2xl text-purple-700">Informations</p>
+            <p class="flex-col">
+              <p>
+                Telephone: <a
+                class="ml-1 inline-block text-purple-700 hover:text-purple-600 duration-200" href="tel:0620044006">06 20 04
+                40 06</a> 
+              </p>
+              <p>
+                Email: <a class="ml-1 inline-block text-purple-700 hover:text-purple-600 duration-200" href="mailto:stopauharcelementderue33@gmail.com">stopauharcelementderue33@gmail.com</a>
+              </p>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="relative flex-row items-center justify-center pt-5 bg-white min-h-max w-full pb-10">
+      <div class="flex-col flex items-center justify-center space-y-5">
+            <p class="text-5xl text-purple-600">Témoignages</p>
+            <p class="text-lg text-gray-500 italic">Pour mieux comprendre l'harcèlement de rue</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-auto mb-96 place-items-stretch"> 
+            @each(definition in definitions)
+              @!component('components/form/modal', {
+                  title: definition.title,
+                  content: definition.text
+              })
+            @endeach
+            </div>
+      </div>
+    </div>
+  </main>
 </body>
 <script>
   const typedTextSpan = document.querySelector(".typed-text");
