@@ -5,18 +5,10 @@ import { TemoignageValidator } from 'App/Validators/TemoignageValidator'
 export default class DefController {
 
     public async index({ view }: HttpContextContract) {
-        const defs = await Temoignages.query()
+        const temoignages = await Temoignages.query()
 
         return view.render('dashboards/admin/temoignage/index', {
-            definitions: defs
-        })
-    }
-
-    public async indexPublic({ view }: HttpContextContract) {
-        const defs = await Temoignages.query()
-
-        return view.render('home', {
-            definitions: defs
+            temoignages: temoignages
         })
     }
 
@@ -29,6 +21,13 @@ export default class DefController {
             success: "Cette définition a bien été enregistrée !"
         })
 
+        return response.redirect().back()
+    }
+
+    public async destroy({ params, response }: HttpContextContract) {
+        const temoignage = await Temoignages.find(params.id)
+        
+        await temoignage?.delete()
         return response.redirect().back()
     }
 }

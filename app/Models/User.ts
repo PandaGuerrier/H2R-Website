@@ -5,6 +5,7 @@ import * as crypto from 'crypto'
 import {attachment, AttachmentContract} from "@ioc:Adonis/Addons/AttachmentLite";
 import Role from "App/Models/Role";
 import Permission from "App/Models/Permission";
+import Post from './Post';
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -31,6 +32,9 @@ export default class User extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
   
+  @manyToMany(() => Post)
+  public posts: ManyToMany<typeof Post>
+
   @manyToMany(() => Role)
   public roles: ManyToMany<typeof Role>
 

@@ -22,7 +22,7 @@ import Route from '@ioc:Adonis/Core/Route'
 import './routes/auth'
 import './routes/dashboards'
 
-Route.get('/', "TemoignageController.indexPublic").as("home")
+Route.get('/', "HomeController.index").as("home")
 
 // return to /404 if route not found
 Route.any('*', async ({ view }) => {

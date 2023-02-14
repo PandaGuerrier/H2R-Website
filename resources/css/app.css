@@ -30,6 +30,28 @@ body::-webkit-scrollbar-thumb {
   border-radius: 20px; /* roundness of the scroll thumb */
   border: 0px solid none; /* creates padding around scroll thumb */
 }
+
+
+.scrollbar::-webkit-scrollbar {
+    width: 20px;
+    height: 10px;
+    background-color: rgba(rgba(255, 255, 255, 0), green, blue, alpha);
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #c084fc;
+    border-radius: 100vh;
+    border: 3px solid #f6f7ed;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #a855f7;
+  }
+
 /* do an mobil support*/
 
 @media (min-width: 768px) {

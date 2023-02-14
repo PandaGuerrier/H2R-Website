@@ -1,54 +1,57 @@
-<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-
-<div x-data="{ modelOpen: false }">
-    <button @click="modelOpen =!modelOpen" class="flex items-center justify-center px-3 py-2 space-x-2 text-sm tracking-wide text-white transition-colors duration-200 transform rounded-md dark:bg-indigo-600 dark:hover:bg-indigo-700 focus:outline-none focus:ring-opacity-50">
-        <div class="bg-white h-full border border-purple-200 hover:border-purple-400 transition duration-300 rounded-md m-5">
-            <div class="p-5 h-full flex flex-col justify-between">
-              <div class="flex flex-col overflow-hidden gap-4">
-                <div class="flex justify-between">
-                  <div class="space-y-3">
-                    <h2 class="font-medium text-4xl lg:text-lg text-purple-400">Titre: {{ title }}</h2>
-                    <h2 class="font-small text-gray-500 lg:text-lg">Cliquez ici pour accèder au témoignages</h2>
-                  </div>   
+<!-- Code block starts -->
+<dh-component>       
+    <div class="hidden py-12 transition duration-150 ease-in-out z-10 absolute right-0 top-28 bottom-0 left-0 h-full w-full" id="modal">
+        <div role="alert" class="container mx-auto w-11/12 md:w-2/3 max-w-lg">
+            <div class="relative py-8 px-5 md:px-10 bg-white shadow-md rounded border border-gray-400">
+                <div class="w-full flex justify-center text-gray-600 mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-9 h-9">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                      </svg>
+                      
                 </div>
-              </div>
-            </div>
-          </div>
-    </button>
+                <h1 class="text-gray-800 font-xl font-bold flex justify-center tracking-8 leading-tight mb-4">{{ title }}</h1>
+                <p class="text-gray-600 text-sm flex justify-center tracking-normal leading-tight mb-4 text-center	">{{ content }}</p>
 
-    <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
-            <div x-cloak @click="modelOpen = false" x-show="modelOpen" 
-                x-transition:enter="transition ease-out duration-300 transform"
-                x-transition:enter-start="opacity-0" 
-                x-transition:enter-end="opacity-100"
-                x-transition:leave="transition ease-in duration-200 transform"
-                x-transition:leave-start="opacity-100" 
-                x-transition:leave-end="opacity-0"
-                class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
-            ></div>
-
-            <div x-cloak x-show="modelOpen" 
-                x-transition:enter="transition ease-out duration-300 transform"
-                x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
-                x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
-                x-transition:leave="transition ease-in duration-200 transform"
-                x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
-                x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                class="inline-block w-full max-w-xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl 2xl:max-w-2xl"
-            >
-                <div class="flex items-center justify-between space-x-4">
-                    <h1 class="text-xl font-medium text-gray-800 ">Témoignage de {{ title }}</h1>
-
-                    <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700 hover:bg-purple-200 p-2 rounded-md duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </button>
+                <div class="flex items-center justify-center w-full mt-5 reveal">
+                    <a id="btnRedirect" href="{{ action }}" class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700 transition duration-150 ease-in-out hover:bg-red-400 bg-red-500 rounded text-white px-8 py-2 text-sm">{{ button }}</a>
+                    <button class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded px-8 py-2 text-sm" onclick="modalHandler()">Annuler</button>
                 </div>
-                {{{ content }}}
-                
             </div>
         </div>
     </div>
-</div>
+
+    <script>
+        let modalComponent = document.getElementById("modal");
+
+        function modalHandler(val, id) {
+            if (val) {
+                fadeIn(modalComponent);
+                document.getElementById("btnRedirect").href = "{{ action }}" + id;
+            } else {
+                fadeOut(modalComponent);
+            }
+        }
+        function fadeOut(el) {
+            el.style.opacity = 1;
+            (function fade() {
+                if ((el.style.opacity -= 0.1) < 0) {
+                    el.style.display = "none";
+                } else {
+                    requestAnimationFrame(fade);
+                }
+            })();
+        }
+        function fadeIn(el, display) {
+            el.style.opacity = 0;
+            el.style.display = display || "flex";
+            (function fade() {
+                let val = parseFloat(el.style.opacity);
+                if (!((val += 0.2) > 1)) {
+                    el.style.opacity = val;
+                    requestAnimationFrame(fade);
+                }
+            })();
+        }
+    </script>
+    
+</dh-component>

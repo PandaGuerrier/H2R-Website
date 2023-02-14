@@ -59,54 +59,58 @@
         </div>
       </div>
     </div>
-    <div class="relative flex-row items-center justify-center pt-5 bg-purple-400 min-h-max w-full">
-      <div class="flex-col flex items-center justify-center mt-12 space-y-10">
-        <p class="text-2xl md:text-4xl text-white">Vous avez besoin d'aide ?</p>
-        <div class="m-5 md:mx-56 text-sm md:text-lg text-white">
-          <p class="inline-block text-center">
-            Il existe des associations qui luttent contre l’harcèlement de rue comme <a class="text-purple-700">“stop au harcèlement de rue”</a> qui se situe a Bordeaux à la rue Wilson, on peut les contacter au <a
-            class="ml-1 inline-block text-purple-700 hover:text-purple-600 duration-200" href="tel:0620044006">06 20 04
-            40 06</a> ou par email <a class="ml-1 inline-block text-purple-700 hover:text-purple-600 duration-200" href="mailto:stopauharcelementderue33@gmail.com">stopauharcelementderue33@gmail.com</a>
-          </p>
-
-          <div class="space-y-5 flex-col flex items-center mt-5">
-            <p class="text-xl md:text-2xl text-purple-700">Description de cette association</p>
-            <p class="text-center md:text-lg">
-              Cette association a pour but de sensibiliser le public au phénomène de l’harcèlement de rue à bordeaux.
-              Mais
-              aussi de porter des informations à la prévention, l’association agit au coeur de la ville pour inciter le
-              public à lutter contre l’harcèlement de rue.
-              Il existe aussi l’association “ Stand-up international” qui permet de se former pour savoir comment réagir
-              face à l’harcèlement de rue mais aussi elle aide les femmes a regagner de la “force” et surtout de ne pas
-              se
-              sentir seule!!!
-            </p>
-          </div>
-          <div class="space-y-5 flex-col flex items-center mt-5">
-            <p class="text-2xl text-purple-700">Informations</p>
-            <p class="flex-col">
-              <p>
-                Telephone: <a
-                class="ml-1 inline-block text-purple-700 hover:text-purple-600 duration-200" href="tel:0620044006">06 20 04
-                40 06</a> 
-              </p>
-              <p>
-                Email: <a class="ml-1 inline-block text-purple-700 hover:text-purple-600 duration-200" href="mailto:stopauharcelementderue33@gmail.com">stopauharcelementderue33@gmail.com</a>
-              </p>
-            </p>
+    <div class="relative flex items-center justify-center pt-5 bg-white min-h-max w-full">
+        @!component('svg/banner')
+        <div class="absolute w-full h-full">
+          <div class="flex-col flex items-center md:space-y-5 mt-2">
+            <p class="text-lg md:text-5xl text-gray-700">Quelques bases sur <span class="text-purple-600">l’harcèlements de rue</span></p>
+            <p class="text-xs md:text-lg text-gray-500 italic">Lisez nos {{ posts.length }} posts pour en découvrir plus</p>
+            <div class="mx-auto shadow-xl border-md w-1/2 overflow-y-hidden overflow-x-scroll scrollbar bg-red-400"> 
+              <div class="overflow-x-scroll flex overflow-y-hidden space-x-5 scrollbar bg-red-400">
+                @each(post in posts)
+                <a href="/posts/{{ post.id }}">
+                  <div class="max-w-sm min-w-full w-3 bg-white border border-gray-200 rounded-lg shadow">
+                    <div class="p-5 space-y-5">
+                        <h5 class="text-xl text-gray-900 dark:text-white">{{ post.title }}</h5>
+                        <p class="mt-2 text-gray-600 dark:text-gray-400 max-w-md truncate">{{ post.content.replace('<p>', "").replace('</p>', '') }}</p>
+                        <div>
+                          <a href="/" class="mt-4 shadow-md text-purple-500 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-3 py-2 rounded-full text-sm font-medium">Continuer à lire</a>
+                        </div>
+                      </div>
+                </div>
+                </a>
+              @endeach
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    <div class="relative flex-row items-center justify-center pt-5 bg-purple-400 min-h-max w-full pb-10">
+      <div class="flex-col flex items-center justify-center space-y-2">
+            <p class="text-lg md:text-5xl text-white">Pourquoi attendre avant d'agir ?</p>
+            <p class="text-xs md:text-lg text-gray-300 italic">Voici quelques témoignages pour différencier de l’harcèlement de rue</p>
+            <h1 class="absolute text-9xl text-white mb-5 max-w-min text-ellipsis">TÉMOIGNAGES</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-auto mb-96 place-items-stretch"> 
+            @each(temoignage in temoignages)
+              @!component('components/form/modalTemoignage', {
+                  title: temoignage.title,
+                  content: temoignage.text,
+                  type: "témoignage"
+              })
+            @endeach
+            </div>
+      </div>
     </div>
-    <div class="relative flex-row items-center justify-center pt-5 bg-white min-h-max w-full pb-10">
+    <div class="relative flex-row items-center justify-center pt-5  min-h-max w-full pb-10">
       <div class="flex-col flex items-center justify-center space-y-5">
-            <p class="text-5xl text-purple-600">Témoignages</p>
-            <p class="text-lg text-gray-500 italic">Pour mieux comprendre l'harcèlement de rue</p>
+            <p class="text-5xl text-purple-600">Définitions</p>
+            <p class="text-lg text-white italic">Pour mieux comprendre l'harcèlement de rue</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-auto mb-96 place-items-stretch"> 
             @each(definition in definitions)
-              @!component('components/form/modal', {
+              @!component('components/form/modalTemoignage', {
                   title: definition.title,
-                  content: definition.text
+                  content: definition.text,
+                  type: "définition"
               })
             @endeach
             </div>
@@ -115,7 +119,7 @@
   </main>
 </body>
 <script>
-  const typedTextSpan = document.querySelector(".typed-text");
+const typedTextSpan = document.querySelector(".typed-text");
 const cursorSpan = document.querySelector(".cursor");
 
 const textArray = ["dénoncer.", "aider.", "intervenir.", "porter plainte.", "demander de l'aide.", "signaler."];
