@@ -23,6 +23,7 @@ import './routes/auth'
 import './routes/dashboards'
 
 Route.get('/', "HomeController.index").as("home")
+Route.get("/posts/:id", "PostsController.show").as("posts.show")
 
 // return to /404 if route not found
 Route.any('*', async ({ view }) => {

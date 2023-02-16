@@ -29,4 +29,14 @@ export default class PostsController {
         await post?.delete()
         return response.redirect().back()
     }
+
+    public async show({ params, view }: HttpContextContract) {
+        const post = await Post.find(params.id)
+
+        return view.render('posts/show', {
+            post: post
+        })
+    }
 } 
+
+
