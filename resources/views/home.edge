@@ -64,7 +64,7 @@
         @!component('svg/banner')
         <div class="absolute w-full h-full">
           <div class="flex-col flex items-center md:space-y-5 mt-2">
-            <p class="text-lg md:text-5xl text-gray-700">Quelques bases sur <span class="text-purple-600">l’harcèlements de rue</span></p>
+            <p class="md:text-5xl text-gray-700">Quelques bases sur <span class="text-purple-600">l’harcèlements de rue</span></p>
             <p class="text-xs md:text-lg text-gray-500 italic mb-5">Lisez nos {{ posts.length }} posts pour en découvrir plus</p>
             <div class="w-full h-full">
             <div class="mx-auto border-md w-full lg:ml-20 md:ml-10 ml-10 overflow-y-hidden"> 
@@ -110,13 +110,13 @@
               })
             @endeach
             </div>
-            <p id="definitions" class="text-white links">#temoignages</p>
+            <p id="definitions" class="text-white links">#definitions</p>
       </div>
     </div>
     <div class="relative flex-row z-10 items-center justify-center pt-5 min-h-max w-full pb-10">
       <div class="flex-col flex items-center justify-center space-y-2">
             <p class="text-lg md:text-5xl text-black">Vous voulez devenir un <span class="text-purple-500">expert</span> ?</p>
-            <p class="text-xs md:text-lg text-gray-400 italic">Voici quelques définitions pour vous expertiser dans ce domaine</p>
+            <p class="text-xs md:text-lg text-gray-400 italic text-center">Voici quelques définitions pour vous expertiser dans ce domaine</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-auto mb-96 place-items-stretch"> 
             @each(definition in definitions)
             <div class="bg-white h-full border border-purple-200 hover:border-purple-400 transition duration-300 rounded-md m-5">

@@ -13,8 +13,6 @@
                 <th class="hidden md:table-cell px-6 py-3 border-b border-purple-300 text-left text-xs text-white uppercase tracking-wider"
                     scope="col">Titre</th>
                 <th class="hidden md:table-cell px-6 py-3 border-b border-purple-300 text-left text-xs text-white uppercase tracking-wider"
-                    scope="col">Content</th> 
-                <th class="hidden md:table-cell px-6 py-3 border-b border-purple-300 text-left text-xs text-white uppercase tracking-wider"
                     scope="col">Options</th>
             </tr>
         </thead>
@@ -32,9 +30,6 @@
                 </td>
                 <td class="px-6 py-3 w-full whitespace-nowrap text-sm text-white">
                     <h1 class="truncate">{{ post.title }}</h1>
-                </td>
-                <td class="px-6 py-3 w-full whitespace-nowrap text-sm text-white">
-                    <h1 class="truncate">{{{ post.content }}}</h1>
                 </td>
                 <td class="md:table-cell px-8 py-3 whitespace-nowrap text-sm text-gray-500 text-right">
                     <div x-cloak x-data="{ dropdown: false, modal: false }" class="relative inline-block text-left">
@@ -62,7 +57,7 @@
                             class="origin-top-right absolute z-10 right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                             role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                             <div class="" role="none">
-                                <a href={{ "temoignages/edit/" + post.id }}
+                                <a href={{ "posts/edit/" + post.id }}
                                     class="w-full h-full px-4 py-2 flex items-center space-x-2 text-slate-500 hover:bg-gray-100 rounded-t-md">Modifier</a>
                                 <button
                                     class="w-full h-full px-4 py-2 flex items-center space-x-2 text-slate-500 hover:bg-red-100 rounded-b-md"

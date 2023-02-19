@@ -1,6 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Temoignages from 'App/Models/Temoignage'
-import { TemoignageValidator } from 'App/Validators/TemoignageValidator'
+import { TemoignageStoreValidator, TemoignageUpdateValidator } from 'App/Validators/TemoignageValidator'
 
 export default class DefController {
 
@@ -13,7 +13,7 @@ export default class DefController {
     }
 
     public async create({ request, response, session }: HttpContextContract) {
-        const data = await request.validate(TemoignageValidator)
+        const data = await request.validate(TemoignageStoreValidator)
 
         await Temoignages.create(data)
 
@@ -22,6 +22,27 @@ export default class DefController {
         })
 
         return response.redirect().back()
+    }
+
+    public async update({ request, params, response, session }: HttpContextContract) {
+        const data = await request.validate(TemoignageUpdateValidator)
+        const temoignage = await Temoignages.query().where('id', params.id).first()
+
+        await temoignage?.merge(data).save()
+
+        session.flash({
+            success: "Ce témoignage a bien été enregistré !"
+        })
+
+        return response.redirect().back()
+    }
+
+    public async updateView({ params, view }: HttpContextContract) {
+        const temoignage = await Temoignages.query().where('id', params.id).first()
+
+        return view.render('dashboards/admin/temoignage/modify', {
+            temoignage: temoignage
+        })
     }
 
     public async destroy({ params, response }: HttpContextContract) {

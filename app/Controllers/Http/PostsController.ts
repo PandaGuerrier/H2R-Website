@@ -1,6 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Post from 'App/Models/Post'
-import PostValidator from 'App/Validators/PostValidator'
+import { PostStoreValidator, PostUpdateValidator } from 'App/Validators/PostValidator'
 
 export default class PostsController {
     public async index({ view }: HttpContextContract) {
@@ -12,7 +12,7 @@ export default class PostsController {
     }
 
     public async create({ request, response, session }: HttpContextContract) {
-        const data = await request.validate(PostValidator)
+        const data = await request.validate(PostStoreValidator)
 
         await Post.create(data)
 
@@ -21,6 +21,27 @@ export default class PostsController {
         })
 
         return response.redirect().back()
+    }
+
+    public async update({ request, params, response, session }: HttpContextContract) {
+        const data = await request.validate(PostUpdateValidator)
+        const post = await Post.query().where('id', params.id).first()
+
+        await post?.merge(data).save()
+
+        session.flash({
+            success: "Ce post a bien été enregistré !"
+        })
+
+        return response.redirect().back()
+    }
+
+    public async updateView({ params, view }: HttpContextContract) {
+        const post = await Post.query().where('id', params.id).first()
+
+        return view.render('dashboards/admin/posts/modify', {
+            post: post
+        })
     }
 
     public async destroy({ params, response }: HttpContextContract) {
