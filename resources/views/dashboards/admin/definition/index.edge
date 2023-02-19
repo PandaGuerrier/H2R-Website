@@ -1,0 +1,207 @@
+@layout('layouts/dashboard')
+
+@set('user', auth.user)
+@set('emplacement', 'Posts')
+
+@section('body')
+<div class="flex-row min-w-full min-h-screen text-white p-16">
+    <table class="min-w-full rounded-3xl">
+        <thead class="rounded-3xl bg-purple-600">
+            <tr class="rounded-3xl bg-purple-600">
+                <th class="hidden md:table-cell px-6 py-3 border-b border-purple-300 text-left text-xs text-white uppercase tracking-wider"
+                    scope="col">Id</th>
+                <th class="hidden md:table-cell px-6 py-3 border-b border-purple-300 text-left text-xs text-white uppercase tracking-wider"
+                    scope="col">Titre</th>
+                <th class="hidden md:table-cell px-6 py-3 border-b border-purple-300 text-left text-xs text-white uppercase tracking-wider"
+                    scope="col">Content</th> 
+                <th class="hidden md:table-cell px-6 py-3 border-b border-purple-300 text-left text-xs text-white uppercase tracking-wider"
+                    scope="col">Options</th>
+            </tr>
+        </thead>
+        <tbody class="bg-purple-400 rounded-3xl">
+            @each(definition in definitions)
+                @!component('components/form/modal', {
+                    title: 'Supprimer',
+                    content: 'Vous êtes sur le point de supprimer cette définition, cette action est irréversible !',
+                    action: "definitions/delete/",
+                    button: 'Supprimer'
+                })
+            <tr>
+                <td class="px-6 py-3 w-full whitespace-nowrap text-sm text-white">
+                    <h1 class="truncate hover:text-gray-300 duration-200">{{ definition.id }}</h1>
+                </td>
+                <td class="px-6 py-3 w-full whitespace-nowrap text-sm text-white">
+                    <h1 class="truncate">{{ definition.title }}</h1>
+                </td>
+                <td class="px-6 py-3 w-full whitespace-nowrap text-sm text-white">
+                    <h1 class="truncate">{{{ definition.content }}}</h1>
+                </td>
+                <td class="md:table-cell px-8 py-3 whitespace-nowrap text-sm text-gray-500 text-right">
+                    <div x-cloak x-data="{ dropdown: false, modal: false }" class="relative inline-block text-left">
+                        <div>
+                            <button @click="dropdown = !dropdown" type="button"
+                                class="bg-gray-100 rounded-md flex items-center text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-slate-500"
+                                id="menu-button" aria-expanded="true" aria-haspopup="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M6 13.5V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 9.75V10.5" />
+                                </svg>
+
+                            </button>
+                        </div>
+
+                        <div x-show="dropdown" class="fixed z-[5] inset-0" @click="dropdown = false"></div>
+
+                        <div x-show="dropdown" x-transition:enter="transition ease-out duration-100"
+                            x-transition:enter-start="transform opacity-0 scale-95"
+                            x-transition:enter-end="transform opacity-100 scale-100"
+                            x-transition:leave="transition ease-in duration-75"
+                            x-transition:leave-start="transform opacity-100 scale-100"
+                            x-transition:leave-end="transform opacity-0 scale-95"
+                            class="origin-top-right absolute z-10 right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                            role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                            <div class="" role="none">
+                                <a href={{ "definitions/edit/" + definition.id }}
+                                    class="w-full h-full px-4 py-2 flex items-center space-x-2 text-slate-500 hover:bg-gray-100 rounded-t-md">Modifier</a>
+                                <button
+                                    class="w-full h-full px-4 py-2 flex items-center space-x-2 text-slate-500 hover:bg-red-100 rounded-b-md"
+                                    onclick="modalHandler(true, '{{ definition.id }}')">Supprimer</button>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            @end
+        </tbody>
+    </table>
+    <div>
+    </div>
+
+    <script>
+        Vue.component('vue-dropdown', {
+    data: function() {
+      return{
+        show: false,
+      }
+    },
+    props: {
+      color: String,
+      animation: String
+    },
+    template: `
+      <div class="dropdown-wrapper">
+      <button v-on:click="show = !show" class="transition duration-300 px-9">
+           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-600">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 13.5V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 9.75V10.5" />
+          </svg>
+      </button>
+      <transition :name="animation">
+        <div :class="'bg-gray-100'" class="dropdown-menu text-black mt-1 rounded absolute z-10 shadow-lg" v-if="show">
+          <ul class="list-none overflow-hidden rounded">
+              <a href="" class="duration-200 flex py-2 px-4 text-sm text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-700 sm:text-sm">Modifier</a>
+              <button class="duration-200 flex py-2 px-4 text-sm text-gray-700 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-700 sm:text-sm" onclick="modalHandler(true)">Supprimer</button>
+          </ul>
+        </div>
+      </transition>
+    </div>
+    `
+  })
+  
+  const app = new Vue({
+    el: '#app',
+  });
+    </script>
+
+
+
+    <style>
+        button {
+            cursor: pointer;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        /* Animations */
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity .5s;
+        }
+
+        .fade-enter,
+        .fade-leave-to {
+            opacity: 0;
+        }
+
+        /* Slide-in-up animation*/
+        .slide-in-up-enter-active,
+        .slide-in-up-leave-active {
+            transition: all .5s;
+            transform: translateY(0);
+        }
+
+        .slide-in-up-enter,
+        .slide-in-up-leave-to {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Slide-in-right animation*/
+        .slide-in-right-enter-active,
+        .slide-in-right-leave-active {
+            transition: all .5s;
+            transform: translateX(0);
+        }
+
+        .slide-in-right-enter,
+        .slide-in-right-leave-to {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        /* Slide-in-left animation*/
+        .slide-in-left-enter-active,
+        .slide-in-left-leave-active {
+            transition: all .5s;
+            transform: translateX(0);
+        }
+
+        .slide-in-left-enter,
+        .slide-in-left-leave-to {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        /* Scale animation*/
+        .scale-enter-active,
+        .scale-leave-active {
+            transition: all .5s;
+            transform: scale(1);
+        }
+
+        .scale-enter,
+        .scale-leave-to {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        /* Rotate animation*/
+        .rotate-enter-active,
+        .rotate-leave-active {
+            transition: all .5s;
+            transform: scale(1) rotate(-360deg);
+        }
+
+        .rotate-enter,
+        .rotate-leave-to {
+            opacity: 0;
+            transform: scale(0) rotate(360deg);
+        }
+    </style>
+
+</div>
+
+
+@endsection

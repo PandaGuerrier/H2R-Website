@@ -47,7 +47,7 @@
           </div>
           <div class="mt-5 left-0 w-1/4 flex items-start justify-start space-x-5">
             <a href="#"
-              class="text-purple-500 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-4 py-3 rounded-full text-sm font-medium">Vidéos</a>
+              class="text-purple-500 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-4 py-3 rounded-full text-sm font-medium">Témoignages</a>
             <a href="#"
               class="bg-purple-500 text-white hover:bg-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-300 duration-200 px-4 py-3 rounded-full text-sm font-medium">Aides</a>
           </div>
@@ -59,6 +59,7 @@
         </div>
       </div>
     </div>
+    <p id="posts" class="mb-10 text-white">#post</p>
     <div class="relative flex items-center justify-center pt-5 bg-white min-h-max w-full">
         @!component('svg/banner')
         <div class="absolute w-full h-full">
@@ -94,6 +95,7 @@
           </div>
         </div>
       </div>
+    <p id="temoignages" class="mb-10 text-white">#temoignages</p>
     <div class="relative flex-row items-center justify-center pt-5 bg-purple-400 min-h-max w-full pb-10 mt-10">
       <div class="flex-col flex items-center justify-center space-y-2">
             <p class="text-lg md:text-5xl text-white">Pourquoi attendre avant d'agir ?</p>
@@ -108,21 +110,52 @@
               })
             @endeach
             </div>
+            <p id="definitions" class="text-white links">#temoignages</p>
       </div>
     </div>
-    <div class="relative flex-row items-center justify-center pt-5  min-h-max w-full pb-10">
-      <div class="flex-col flex items-center justify-center space-y-5">
-            <p class="text-5xl text-purple-600">Définitions</p>
-            <p class="text-lg text-white italic">Pour mieux comprendre l'harcèlement de rue</p>
+    <div class="relative flex-row z-10 items-center justify-center pt-5 min-h-max w-full pb-10">
+      <div class="flex-col flex items-center justify-center space-y-2">
+            <p class="text-lg md:text-5xl text-black">Vous voulez devenir un <span class="text-purple-500">expert</span> ?</p>
+            <p class="text-xs md:text-lg text-gray-400 italic">Voici quelques définitions pour vous expertiser dans ce domaine</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-auto mb-96 place-items-stretch"> 
             @each(definition in definitions)
-              @!component('components/form/modalTemoignage', {
-                  title: definition.title,
-                  content: definition.text,
-                  type: "définition"
-              })
+            <div class="bg-white h-full border border-purple-200 hover:border-purple-400 transition duration-300 rounded-md m-5">
+              <div class="p-5 h-full flex flex-col justify-between">
+                <div class="flex flex-col overflow-hidden gap-4">
+                  <div class="flex justify-between">
+                    <div class="space-y-3 w-full flex-col flex items-center justify-center">
+                      <h2 class="font-medium text-4xl lg:text-lg text-purple-400">{{ definition.title }}</h2>
+                      <h2 class="font-small text-gray-500 lg:text-lg">{{ definition.content }}</h2>
+                    </div>   
+                  </div>
+                </div>
+              </div>
+            </div>
             @endeach
             </div>
+      </div>
+    </div>
+    <div class="relative items-center justify-center min-h-max w-full bg-purple-400">
+      <div class="w-full h-full flex flex-row items-center justify-center space-y-2 p-5 lg:px-20 py-5">
+        <div class="w-full h-full flex flex-row">
+          <div class="hidden h-full lg:flex justify-center items-center mb-28">
+            @!component('svg/logoGrand', {
+            classe: 'mt-32'
+            })
+          </div>
+            <div class="flex flex-col w-full space-y-4">
+              <div class="w-full lg:w-3/4 h-full flex flex-col items-center justify-start lg:ml-16 text-gray-300">
+                  <h1 class="text-xl text-white">Plan du site</h1>
+                  <a href="/">Accueil</a>
+                  <a href="/#posts">Posts</a>
+                  <a href="/#temoignages">Témoignages</a>
+                  <a href="/#definitions">Définitions</a>
+                </div>
+                <div class="w-full lg:w-1/2 flex items-center justify-center lg:items-end lg:justify-end text-white">
+                  <h1 class="text-sm lg:text-lg">Fait par <span class="text-purple-600">Tiffany</span> et <a href="https://discord.gg/2wj9vYJPmq" target="_blank" class="text-purple-600">Jules</a> avec le <span class="animate-pulse animate-ping">❤️</span></h1>
+                </div>
+            </div>
+         </div>
       </div>
     </div>
   </main>

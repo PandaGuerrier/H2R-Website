@@ -76,7 +76,7 @@ Change class "fixed" to "sticky" in "navbar" (l. 33) so the navbar doesn't hide 
                     <!-- one category / navigation group -->
                     <div class="px-4 pb-6">
                         <h3 class="mb-2 text-xs font-medium uppercase text-gray-300">
-                            Harcèlement2Rue
+                            Témoignages
                         </h3>
                         <ul class="mb-8 text-sm font-medium space-y-5">
                             <li>
@@ -91,7 +91,13 @@ Change class "fixed" to "sticky" in "navbar" (l. 33) so the navbar doesn't hide 
                                     <span class="select-none">Ajouter un témoignage</span>
                                 </a>
                             </li>
-
+                        </ul>
+                    </div>
+                    <div class="px-4 pb-6">
+                        <h3 class="mb-2 text-xs font-medium uppercase text-gray-300">
+                            Posts
+                        </h3>
+                        <ul class="mb-8 text-sm font-medium space-y-5">
                             <li>
                                 <a class="active flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-purple-300 duration-200"
                                     href="{{ route('dashboard.admin.post.index') }}">
@@ -104,10 +110,23 @@ Change class "fixed" to "sticky" in "navbar" (l. 33) so the navbar doesn't hide 
                                     <span class="select-none">Ajouter un post</span>
                                 </a>
                             </li>
+                        </ul>
+                    </div>
+                    <div class="px-4 pb-6">
+                        <h3 class="mb-2 text-xs font-medium uppercase text-gray-300">
+                            Définitions
+                        </h3>
+                        <ul class="mb-8 text-sm font-medium space-y-5">
                             <li>
                                 <a class="active flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-purple-300 duration-200"
-                                    href="#">
-                                    <span class="select-none">Utilisateurs</span>
+                                    href="{{ route('dashboard.admin.definition.index') }}">
+                                    <span class="select-none">Définitions</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="active flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-purple-300 duration-200"
+                                    href="{{ route('dashboard.admin.definition.create') }}">
+                                    <span class="select-none">Ajouter une définition</span>
                                 </a>
                             </li>
                         </ul>

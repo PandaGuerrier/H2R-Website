@@ -29,5 +29,16 @@ Route.group(() => {
     Route.post('create', 'PostsController.create').as('dashboard.admin.post.create.post')
   }).prefix('posts')
 
+  Route.group(() => {
+    Route.get('create', async ({ view }) => {
+      return view.render('dashboards/admin/definition/create')
+    }).as('dashboard.admin.definition.create')
+
+    Route.get('', "DefinitionsController.index").as("dashboard.admin.definition.index")
+    Route.get('delete/:id', "DefinitionsController.destroy").as("dashboard.admin.definition.destroy")
+
+    Route.post('create', 'DefinitionsController.create').as('dashboard.admin.definition.create.post')
+  }).prefix('definitions')
+
 
 }).prefix('dashboard/').middleware(['auth', 'admin'])
