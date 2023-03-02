@@ -26,8 +26,6 @@
          <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
         @if(admin)
          <a href='{{ route('dashboard.index') }}' class="text-white block px-4 py-2 text-sm hover:bg-purple-400 duration-200" role="menuitem" tabindex="-1" id="menu-item-1">Dashboard</a>
-        @else
-         <a href="#" class="text-white block px-4 py-2 text-sm hover:bg-purple-400" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
         @endif
         <a href="/auth/logout" class="text-red-400 block px-4 py-2 text-sm hover:bg-red-200 rounded-b-md duration-200" role="menuitem" tabindex="-1" id="menu-item-1">Déconnexion</a>
       </div>

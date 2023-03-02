@@ -19,6 +19,7 @@ Route.group(() => {
     Route.get('create', async ({ view }) => {
       return view.render('dashboards/admin/temoignage/create')
     }).as('dashboard.admin.def.create')
+    
     Route.post('create', 'TemoignageController.create').as('dashboard.admin.temoignage.create.post')
 
     Route.get('edit/:id', 'TemoignageController.updateView').as('dashboard.admin.temoignage.update')
