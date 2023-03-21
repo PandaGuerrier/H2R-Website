@@ -7,7 +7,7 @@ export default class extends BaseSeeder {
       {
         username: 'Panda',
         email: 'Panda@gmail.com',
-        password: 'Panda',
+        password: 'xxxxx',
         role: 'admin'
       }])
 
